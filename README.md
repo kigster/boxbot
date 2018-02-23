@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/kigster/boxbot.svg?branch=master)](https://travis-ci.org/kigster/boxbot)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cd80215dd0ad8e7b4826/maintainability)](https://codeclimate.com/github/kigster/boxbot/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/cd80215dd0ad8e7b4826/test_coverage)](https://codeclimate.com/github/kigster/boxbot/test_coverage)
 
 # Boxbot
 
