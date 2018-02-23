@@ -13,7 +13,9 @@ RSpec.shared_examples 'box-5x4x3-tab' do
 end
 
 RSpec.shared_examples 'dimensions-5x4x3' do
+  let(:tab_override) { nil }
   include_examples 'box-5x4x3'
+
   let(:dimension_params) do
     {
       height:    height,
@@ -25,6 +27,10 @@ RSpec.shared_examples 'dimensions-5x4x3' do
     }
   end
 
-  let(:dimensions_5x4x3) { Boxbot::BoxDimensions.new(**dimension_params) }
+  before do
+    dimension_params[:tab] = tab_override if tab_override
+  end
+
+  let(:dimensions_5x4x3) { Boxbot::Dimensions.new(**dimension_params) }
 end
 

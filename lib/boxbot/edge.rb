@@ -1,7 +1,6 @@
 require 'dry-struct'
 require 'dry-types'
-require 'boxbot/types'
-require 'boxbot/box_dimensions'
+require 'boxbot'
 module Boxbot
   class Edge < Dry::Struct
     constructor_type :schema
@@ -9,7 +8,7 @@ module Boxbot
     attribute :face, Types::BoxFaces
     attribute :joins, Types::BoxFaces
     attribute :dimension, Types::Dimensions
-    attribute :dimensions, BoxDimensions
+    attribute :dimensions, Dimensions
     attribute :direction, Types::EdgeDirection
 
     def initialize(*args, &block)
