@@ -23,6 +23,21 @@ RSpec.describe Boxbot::BoxDimensions do
   end
 
   context '#number_of_tabs_for' do
+    context 'invalid argument' do
+      let(:dim) { Object.new }
+      it 'should raise error' do
+        expect{ dims.number_of_tabs_for dim }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'depth' do
+      let(:dim) { 2 }
+      let(:tab) { 0.125 }
+      subject { dims.number_of_tabs_for dim }
+      before { dimension_params[:tab] = tab }
+      it { is_expected.to eq 25 }
+    end
+
     context 'height' do
       let(:dim) { 'height' }
       let(:tab) { 0.5 }
