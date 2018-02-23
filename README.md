@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kigster/boxbot.svg?branch=master)](https://travis-ci.org/kigster/boxbot)
+
 # Boxbot
 
 **Work In Progress**
