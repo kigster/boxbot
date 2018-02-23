@@ -1,4 +1,3 @@
-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'boxbot/version'
@@ -9,11 +8,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Konstantin Gredeskoul']
   spec.email         = ['kigster@gmail.com']
 
-  spec.summary       = 'Boxbot - is a work in progress replacement of the laser-cutter ruby gem'
-  spec.description   = 'Boxbot - is a work in progress replacement of the laser-cutter ruby gem'
+  BOXBOT__SUMMARY    = 'BoxBot aims to generate an SVG or PDF template that is meant to be used with a laser cutter. Boxbot will generate a 2D cut layout for a 3D box (parallelepiped) with matching tabs that allow the box to be "snapped into place" without screws, although screws and T-joins can also be added. This gem is currently work in progress, and is a rewrite of the laser-cutter box drawing logic.'
+
+  spec.summary       = BOXBOT__SUMMARY
+  spec.description   = BOXBOT__SUMMARY
   spec.homepage      = 'https://github.com/kigster/boxbot'
   spec.license       = 'MIT'
-
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end

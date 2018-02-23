@@ -4,9 +4,21 @@
 
 # Boxbot
 
-**Work In Progress**
+> NOTE: **This gem is not yet finished, and is work in progress.**
 
-This is a rewrite of the [laser-cutter](https://github.com/kigster/laser-cutter) box drawing logic.
+BoxBot aims to generate an SVG or PDF template that is meant to be used with a laser cutter. Boxbot will generate a 2D cut layout for a 3D box (parallelepiped) with matching tabs that allow the box to be "snapped into place" without screws, although screws and T-joins can also be added. This gem is currently work in progress, and is a rewrite of the [laser-cutter](https://github.com/kigster/laser-cutter) box drawing logic.
+
+## Layouts
+
+The following is an example layout of the box that's 5x4x3 (width, height, depth):
+
+![layout](img/layout.png)
+
+## Kerf
+
+Kerf is the width of the laser-cutting beam. The following diagram depicts how Boxbot generates templates with the non-zero Kerf defined. The yellow line below is where the laser cuts, the red/black are the areas of the material removed by the laser cutter. The light blue is the "desired" shape of the tabs.
+
+![layout](img/kerf.png)
 
 ## Installation
 

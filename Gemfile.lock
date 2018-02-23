@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    boxbot (0.1.0)
+    boxbot (0.1.1)
       dry-configurable
       dry-monads
       dry-struct
