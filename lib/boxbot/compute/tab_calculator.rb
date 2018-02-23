@@ -4,17 +4,26 @@ require 'boxbot/types'
 
 module Boxbot
   module Compute
+
+    # Holds the result of Tab Width Computation.
+    #
+    # @attr [String] dimension name
+    # @attr [Float] length the length of the dimension
+    # @attr [Integer] tab_count the total number of tabs along this dimension
+    # @attr [Float] tab_width length of each tab without the kerf adjustment
+    #
     TabWidthResult = Struct.new(:dimension, :length, :tab_count, :tab_width)
 
     MAX_TAB_COUNT = (ENV['BOXBOT__MAX_TAB_COUNT'] || '99').to_i
-    #
-    # TabWithCalculator
-    #
+
     # Computes the actual tab with for a given dimension index or name.
     #
-    # Usage:
+    # @author Konstantin Gredeskoul
+    # @attr [Boxbot::Dimensions] dimensions instance
     #
-    #     Boxbot::Compute::TabCalculator.new(dimensions)['height']
+    # @example compute number of tabs for the vertical dimension
+    #     dim = Boxbot::Dimension.new(width: 10, ... )
+    #     Boxbot::Compute::TabCalculator.new(dim)['height']
     #     # => 9
     #
     class TabCalculator
@@ -24,14 +33,15 @@ module Boxbot
         self.dimensions = dimensions
       end
 
-      def [](dimension_identifier)
-        tab_count_for_length(
-          dimension_length(
-            dimension_identifier
-          )
-        )
-      end
-
+      # Computes the tab width for a given dimension, and returns
+      # a TabWithResult struct.
+      #
+      # @param dimension_identifier [Symbol,String,Integer] A name, symbol
+      #   or an integer index of one of 3 dimensions.
+      #   Can be 'width' or 0, 'height' or 1, 'depth' or 2
+      #
+      # @return [TabWidthResult] struct with tab width, count and length
+      # @raise ArgumentError if argument is not a String, Symbol, or Integer.
       def calculate(dimension_identifier)
         index     = resolve_dimension_argument(dimension_identifier)
         length    = dimensions.inner_box[index]
@@ -42,6 +52,20 @@ module Boxbot
                            length,
                            tab_count,
                            tab_width)
+      end
+
+      # Computes the tab count for a given dimension, and returns
+      # an integer result.
+      #
+      # @param (see #calculate)
+      # @return [Integer] Number of tabs along this dimension
+      # @raise ArgumentError if argument is not a String, Symbol, or Integer.
+      def [](dimension_identifier)
+        tab_count_for_length(
+          dimension_length(
+            dimension_identifier
+          )
+        )
       end
 
       private
@@ -65,16 +89,15 @@ module Boxbot
         end
       end
 
-      private
       def resolve_dimension_argument(dimension_identifier)
-        index = case dimension_identifier
-                  when Numeric
-                    dimension_identifier
-                  when String, Symbol
-                    Boxbot::Edge.dimension_index(dimension_identifier.to_s)
-                  else
-                    raise ArgumentError, "invalid argument type #{dimension_identifier.class}"
-                end
+        case dimension_identifier
+          when Numeric
+            dimension_identifier
+          when String, Symbol
+            Boxbot::Edge.dimension_index(dimension_identifier.to_s)
+          else
+            raise ArgumentError, "invalid argument type #{dimension_identifier.class}"
+        end
       end
     end
   end
