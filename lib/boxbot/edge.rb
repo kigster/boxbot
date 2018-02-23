@@ -1,7 +1,7 @@
 require 'dry-struct'
 require 'dry-types'
 require 'boxbot/types'
-require 'boxbot/inner_dimensions'
+require 'boxbot/box_dimensions'
 module Boxbot
   class Edge < Dry::Struct
     constructor_type :schema
@@ -9,7 +9,7 @@ module Boxbot
     attribute :face, Types::BoxFaces
     attribute :joins, Types::BoxFaces
     attribute :dimension, Types::Dimensions
-    attribute :inner_dimensions, InnerDimensions
+    attribute :dimensions, BoxDimensions
     attribute :direction, Types::EdgeDirection
 
     def initialize(*args, &block)
@@ -17,7 +17,11 @@ module Boxbot
     end
 
     def dimension_index
-      Types::Dimensions.values.find_index(dimension)
+      self.class.dimension_index(dimension)
+    end
+
+    def self.dimension_index(dim)
+      Types::Dimensions.values.find_index(dim)
     end
 
   end

@@ -14,7 +14,7 @@ RSpec.describe Boxbot::Edge do
       face:             face,
       joins:            joins,
       dimension:        dimension,
-      inner_dimensions: dimensions_5x4x3,
+      dimensions: dimensions_5x4x3,
       direction:        direction
     }
   end
@@ -25,6 +25,6 @@ RSpec.describe Boxbot::Edge do
   its(:joins) { should eq 'front' }
   its(:dimension) { should eq 'width' }
   its(:dimension_index) { should eq 0 }
-  its(:inner_dimensions) { should eq dimensions_5x4x3 }
+  its(:dimensions) { should eq dimensions_5x4x3 }
   its(:direction) { should eq 'out' }
 end

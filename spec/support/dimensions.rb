@@ -25,6 +25,6 @@ RSpec.shared_examples 'dimensions-5x4x3' do
     }
   end
 
-  let(:dimensions_5x4x3) { Boxbot::InnerDimensions.new(**dimension_params) }
+  let(:dimensions_5x4x3) { Boxbot::BoxDimensions.new(**dimension_params) }
 end
 
