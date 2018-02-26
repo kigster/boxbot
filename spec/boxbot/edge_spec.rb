@@ -11,20 +11,28 @@ RSpec.describe Boxbot::Edge do
 
   let(:edge_params) do
     {
-      face:             face,
-      joins:            joins,
-      dimension:        dimension,
+      face:       face,
+      joins:      joins,
+      dimension:  dimension,
       dimensions: dimensions_5x4x3,
-      direction:        direction
+      direction:  direction
     }
   end
 
   subject(:edge) { described_class.new(**edge_params) }
 
-  its(:face) { should eq 'top' }
-  its(:joins) { should eq 'front' }
-  its(:dimension) { should eq 'width' }
-  its(:dimension_index) { should eq 0 }
-  its(:dimensions) { should eq dimensions_5x4x3 }
-  its(:direction) { should eq 'out' }
+  describe 'attributes' do
+    its(:face) { should eq 'top' }
+    its(:joins) { should eq 'front' }
+    its(:dimension) { should eq 'width' }
+    its(:dimension_index) { should eq 0 }
+    its(:dimensions) { should eq dimensions_5x4x3 }
+    its(:direction) { should eq 'out' }
+  end
+
+  describe '#copy_changed' do
+    before { expect(edge.direction).to eq 'out' }
+    subject(:edge1) { edge.copy_changed(direction: 'in') }
+    its(:direction) { should eq 'in' }
+  end
 end

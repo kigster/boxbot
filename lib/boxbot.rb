@@ -7,6 +7,8 @@ require 'boxbot/types'
 require 'boxbot/dimensions'
 require 'boxbot/edge'
 require 'boxbot/compute/tab_calculator'
+require 'boxbot/factories/edge_factory'
+require 'boxbot/factories/edge_builder'
 
 # Main namespace for the Boxbot library.
 #
