@@ -1,7 +1,8 @@
 module Boxbot
   module Factories
     class EdgeFactory
-      attr_accessor :current_edge, :edge_list, :edge_set
+      attr_accessor :edge_list, :edge_set
+      attr_writer :current_edge
 
       extend Forwardable
       def_delegators :@edge_list, :each, :size, :[]
@@ -9,32 +10,50 @@ module Boxbot
       include Enumerable
 
       def initialize
+        reset!
+      end
+
+      def reset!
+        self.edge_set  = Set.new
+        self.edge_list = Array.new
         self.current_edge = nil
-        reset_edges
+      end
+
+      def flush!
+        self.<< self.current_edge if self.current_edge
+        self.current_edge = nil
+      end
+
+      def create_edge(**args)
+        self.current_edge = Edge::Model.new(**args)
+      end
+
+      def current_edge(**args)
+        @current_edge ||= Edge::Model.new(**args)
       end
 
       def outward
-        self.current_edge.direction = 'out'
+        self.current_edge = current_edge.copy_changed(direction: 'out')
       end
 
       def inward
-        self.current_edge.direction = 'in'
+        self.current_edge = current_edge.copy_changed(:direction, 'in')
       end
 
       def corner
         self.current_edge.corner = true
       end
 
-      def edge(count = 1, dim, &block)
+      def edge(count = 1, **args, &block)
         count.times do
-          make_edge(dim, &block)
+          make_edge(**args, &block)
         end
       end
 
-      def create_edges
-        reset_edges
-        yield if block_given?
-        edges
+      def create_edges(&block)
+        reset!
+        self.instance_exec(&block)
+        edge_list
       end
 
       def <<(edge)
@@ -46,16 +65,11 @@ module Boxbot
 
       private
 
-      def reset_edges
-        self.edge_set = Set.new
-        self.edge_list = Array.new
 
-      end
-
-      def make_edge(dim, &block)
-        self.current_edge = Edge.new(dimension: dim.to_s)
-        self.current_edge.instance_eval(&block) if block
-        self.<< self.current_edge if self.current_edge
+      def make_edge(**args, &block)
+        flush!
+        create_edge(**args)
+        self.instance_exec(&block) if block
       end
 
     end

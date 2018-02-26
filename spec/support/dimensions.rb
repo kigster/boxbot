@@ -31,6 +31,6 @@ RSpec.shared_examples 'dimensions-5x4x3' do
     dimension_params[:tab] = tab_override if tab_override
   end
 
-  let(:dimensions_5x4x3) { Boxbot::Dimensions.new(**dimension_params) }
+  let(:dimensions_5x4x3) { Boxbot::Dimensions::Model.new(**dimension_params) }
 end
 

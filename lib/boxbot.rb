@@ -4,8 +4,8 @@ require 'dry-types'
 Dry::Types.load_extensions(:maybe)
 
 require 'boxbot/types'
-require 'boxbot/dimensions'
-require 'boxbot/edge'
+require 'boxbot/dimensions/model'
+require 'boxbot/edge/model'
 require 'boxbot/compute/tab_calculator'
 require 'boxbot/factories/edge_factory'
 require 'boxbot/factories/edge_builder'
@@ -18,5 +18,4 @@ require 'boxbot/factories/edge_builder'
 # @see https://github.com/kigster/boxbot
 # @author Konstantin Gredeskoul
 module Boxbot
-
 end

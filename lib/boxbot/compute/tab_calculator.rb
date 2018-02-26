@@ -94,7 +94,7 @@ module Boxbot
           when Numeric
             dimension_identifier
           when String, Symbol
-            Boxbot::Edge.dimension_index(dimension_identifier.to_s)
+            Boxbot::Edge::Model.dimension_index(dimension_identifier.to_s)
           else
             raise ArgumentError, "invalid argument type #{dimension_identifier.class}"
         end

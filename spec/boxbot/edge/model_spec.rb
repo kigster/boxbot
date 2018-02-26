@@ -1,7 +1,6 @@
 require 'spec_helper'
-require_relative '../support/dimensions'
 
-RSpec.describe Boxbot::Edge do
+RSpec.describe Boxbot::Edge::Model do
   include_examples 'dimensions-5x4x3'
 
   let(:face) { 'top' }
