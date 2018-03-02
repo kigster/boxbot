@@ -12,8 +12,7 @@ module Boxbot
           include Dry::Transaction::Operation
 
           def call(input)
-            if input.is_a?(Boxbot::Edge)
-              # TODO: create a first set of point tuples
+            if input.is_a?(Boxbot::Edge::Model)
               Success(input)
             else
               Failure("Invalid input parameter #{input}")

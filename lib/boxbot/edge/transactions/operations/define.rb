@@ -11,11 +11,11 @@ module Boxbot
         class Define
           include Dry::Transaction::Operation
 
-          def call(input)
-            if input.is_a?(Hash) && input[:dimensions].is_a?(Boxbot::Dimensions)
-              Success(Boxbot::Edge.new(**input))
+          def call(edge)
+            if edge.kind_of?(::Boxbot::Edge::Model) # && edge.dimensions.is_a?(Boxbot::Dimensions)
+              Success(edge)
             else
-              Failure("Invalid input parameter #{input}")
+              Failure("Error in #Define: expecting an edge, got: #{edge}")
             end
           end
         end

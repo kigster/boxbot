@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'dry-struct'
   spec.add_dependency 'dry-types'
   spec.add_dependency 'dry-transaction'
+  spec.add_dependency 'dry-container'
   spec.add_dependency 'hashie'
   spec.add_dependency 'require_dir'
   spec.add_dependency 'victor'

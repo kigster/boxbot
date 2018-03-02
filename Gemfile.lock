@@ -3,6 +3,7 @@ PATH
   specs:
     boxbot (0.1.1)
       dry-configurable
+      dry-container
       dry-monads
       dry-struct
       dry-transaction
