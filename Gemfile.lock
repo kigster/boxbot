@@ -84,7 +84,7 @@ GEM
       dry-equalizer (~> 0.2)
       dry-logic (~> 0.4, >= 0.4.2)
       inflecto (~> 0.0.0, >= 0.0.2)
-    ffi (1.9.22)
+    ffi (1.9.23)
     gherkin (5.0.0)
     hashie (3.5.7)
     ice_nine (0.11.2)
