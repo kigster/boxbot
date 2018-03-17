@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-RSpec.describe Boxbot::Edge::Model do
-  include_examples 'dimensions-5x4x3'
+RSpec.describe Boxbot::Geo::Edge do
+  include_examples 'settings-5x4x3'
 
   let(:face) { 'top' }
   let(:joins) { 'front' }
@@ -10,11 +10,11 @@ RSpec.describe Boxbot::Edge::Model do
 
   let(:edge_params) do
     {
-      face:       face,
-      joins:      joins,
-      dimension:  dimension,
-      dimensions: dimensions_5x4x3,
-      direction:  direction
+      face: face,
+      joins: joins,
+      dimension: dimension,
+      dimensions: settings_5x4x3,
+      direction: direction
     }
   end
 
@@ -25,7 +25,7 @@ RSpec.describe Boxbot::Edge::Model do
     its(:joins) { should eq 'front' }
     its(:dimension) { should eq 'width' }
     its(:dimension_index) { should eq 0 }
-    its(:dimensions) { should eq dimensions_5x4x3 }
+    its(:dimensions) { should eq settings_5x4x3 }
     its(:direction) { should eq 'out' }
   end
 

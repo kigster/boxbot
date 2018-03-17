@@ -1,6 +1,6 @@
 module Boxbot
   module Factories
-    class EdgeFactory
+    class GeoFactory
       attr_accessor :edge_list, :edge_set
       attr_writer :current_edge
 
@@ -25,11 +25,11 @@ module Boxbot
       end
 
       def create_edge(**args)
-        self.current_edge = Edge::Model.new(**args)
+        self.current_edge = Geo::Edge.new(**args)
       end
 
       def current_edge(**args)
-        @current_edge ||= Edge::Model.new(**args)
+        @current_edge ||= Geo::Edge.new(**args)
       end
 
       def outward

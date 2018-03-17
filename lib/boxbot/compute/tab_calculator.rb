@@ -19,7 +19,7 @@ module Boxbot
     # Computes the actual tab with for a given dimension index or name.
     #
     # @author Konstantin Gredeskoul
-    # @attr [Boxbot::Dimensions] dimensions instance
+    # @attr [Boxbot::Geo] dimensions instance
     #
     # @example compute number of tabs for the vertical dimension
     #     dim = Boxbot::Dimension.new(width: 10, ... )
@@ -48,7 +48,7 @@ module Boxbot
         tab_count = tab_count_for_length(length)
         tab_width = length / tab_count
 
-        TabWidthResult.new(Types::Dimensions[index],
+        TabWidthResult.new(Types::Axis[index],
                            length,
                            tab_count,
                            tab_width)
@@ -94,7 +94,7 @@ module Boxbot
           when Numeric
             dimension_identifier
           when String, Symbol
-            Boxbot::Edge::Model.dimension_index(dimension_identifier.to_s)
+            Boxbot::Geo::Edge.dimension_index(dimension_identifier.to_s)
           else
             raise ArgumentError, "invalid argument type #{dimension_identifier.class}"
         end

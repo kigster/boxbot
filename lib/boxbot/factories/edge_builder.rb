@@ -1,14 +1,14 @@
 require_relative 'edge_factory'
 module Boxbot
   module Factories
-    class EdgeBuilder < EdgeFactory
+    class GeoBuilder < GeoFactory
       #       constructor_type :schema
       #
       #       attribute :face, Types::BoxFaces
       #       attribute :joins, Types::BoxFaces
-      #       attribute :dimension, Types::Dimensions
-      #       attribute :dimensions, Dimensions::Model
-      #       attribute :direction, Types::EdgeDirection
+      #       attribute :dimension, Types::Geo::Geo
+      #       attribute :dimensions, Geo::Model
+      #       attribute :direction, Types::Geo::Direction
       #       attribute :corner, Types::Bool
 
       def build(dimensions)

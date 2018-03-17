@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe Boxbot::Dimensions::Model do
-  include_examples 'dimensions-5x4x3'
-  subject(:dims) { dimensions_5x4x3 }
+RSpec.describe Boxbot::Settings do
+  include_examples 'settings-5x4x3'
+  subject(:dims) { settings_5x4x3 }
 
   its(:height) { should eq 4 }
   its(:width) { should eq 5.0 }

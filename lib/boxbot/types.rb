@@ -16,16 +16,15 @@ module Boxbot
       back
     ]
 
-    EdgeDirection = String.enum *%w[
+    NotchDirection = String.enum *%w[
       out
       in
     ]
 
-    Dimensions = String.enum *%w[
+    Axis = String.enum *%w[
       width
       height
       depth
     ]
-
   end
 end

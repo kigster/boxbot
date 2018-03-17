@@ -4,10 +4,9 @@ require 'dry-types'
 Dry::Types.load_extensions(:maybe)
 
 require 'boxbot/types'
-require 'boxbot/dimensions/model'
-
-require 'boxbot/edge/model'
-require 'boxbot/edge/transaction'
+require 'boxbot/settings'
+require 'boxbot/geo/edge'
+require 'boxbot/transactions/edge_transaction'
 
 require 'boxbot/compute/tab_calculator'
 

@@ -3,16 +3,16 @@ require 'dry-types'
 require 'boxbot'
 
 module Boxbot
-  module Edge
-    class Model < Dry::Struct
+  module Geo
+    class Edge < ::Dry::Struct
       # noinspection RubyResolve
       constructor_type :schema
 
       attribute :face, Types::BoxFaces
       attribute :joins, Types::BoxFaces
-      attribute :dimension, Types::Dimensions
-      attribute :dimensions, Dimensions::Model
-      attribute :direction, Types::EdgeDirection
+      attribute :dimension, Types::Axis
+      attribute :dimensions, ::Boxbot::Settings
+      attribute :direction, Types::NotchDirection
       attribute :corner, Types::Bool
 
       def initialize(*args, &block)
@@ -25,7 +25,7 @@ module Boxbot
       # @example change direction of of the edge
       #     edge_out = edge.copy_changed(direction: 'in')
       #
-      # @returns [Edge]
+      # @returns [Geo]
       def copy_changed(**values)
         self.class.new(**self.to_hash.merge!(values))
       end
@@ -35,7 +35,7 @@ module Boxbot
       end
 
       def self.dimension_index(dim)
-        Types::Dimensions.values.find_index(dim)
+        Types::Axis.values.find_index(dim)
       end
     end
 
@@ -43,5 +43,4 @@ module Boxbot
 end
 
 
-require_relative 'transaction'
 

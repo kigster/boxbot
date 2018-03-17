@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'hashie'
   spec.add_dependency 'require_dir'
   spec.add_dependency 'victor'
+  spec.add_dependency 'ruby-geometry'
 
   spec.add_development_dependency 'aruba'
   spec.add_development_dependency 'bundler', '~> 1.15'

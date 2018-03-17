@@ -22,5 +22,5 @@ RSpec.configure do |config|
   end
 end
 
-require_relative 'support/dimensions'
+require_relative 'support/settings'
 

@@ -1,14 +1,14 @@
 require 'spec_helper'
 require 'dry-monads'
-RSpec.describe Boxbot::Edge::Transactions::Create do
-  include_examples 'dimensions-5x4x3'
+RSpec.describe Boxbot::Transactions::Create do
+  include_examples 'settings-5x4x3'
 
   let(:operation) { described_class.new }
-  let(:edges) { Boxbot::Factories::EdgeBuilder.new.build(dimensions_5x4x3) }
+  let(:edges) { Boxbot::Factories::GeoBuilder.new.build(settings_5x4x3) }
 
   context 'first edge' do
     subject(:input) { edges.first }
-    it { is_expected.to be_kind_of(Boxbot::Edge::Model) }
+    it { is_expected.to be_kind_of(Boxbot::Geo::Edge) }
     
     context 'transaction' do
       subject(:result) { operation.call(input) }

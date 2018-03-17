@@ -12,11 +12,11 @@ RSpec.shared_examples 'box-5x4x3-tab' do
   let(:tab) { 0.5 }
 end
 
-RSpec.shared_examples 'dimensions-5x4x3' do
+RSpec.shared_examples 'settings-5x4x3' do
   let(:tab_override) { nil }
   include_examples 'box-5x4x3'
 
-  let(:dimension_params) do
+  let(:settings_args) do
     {
       height:    height,
       width:     width,
@@ -28,9 +28,9 @@ RSpec.shared_examples 'dimensions-5x4x3' do
   end
 
   before do
-    dimension_params[:tab] = tab_override if tab_override
+    settings_args[:tab] = tab_override if tab_override
   end
 
-  let(:dimensions_5x4x3) { Boxbot::Dimensions::Model.new(**dimension_params) }
+  let(:settings_5x4x3) { Boxbot::Settings.new(**settings_args) }
 end
 
